@@ -1,9 +1,9 @@
 package neoflex.controllers;
 
 
-import neoflex.dto.CalculateResponse;
+import neoflex.dto.CalculationResponse;
 import neoflex.exceptions.WrongParametersException;
-import neoflex.services.CalculateService;
+import neoflex.services.CalculationService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,21 +16,21 @@ import java.time.LocalDate;
 @Controller
 public class CalculatorController {
 
-    CalculateService calculating;
+    CalculationService calculating;
 
-    public CalculatorController(CalculateService calculating) {
+    public CalculatorController(CalculationService calculating) {
         this.calculating = calculating;
     }
 
     @GetMapping("/calculacte")
-    public ResponseEntity<CalculateResponse> calculating(@RequestParam Integer countOfDays,
-                                                         @RequestParam Double averageSalary,
-                                                         @RequestParam(required = false)
+    public ResponseEntity<CalculationResponse> calculating(@RequestParam Integer countOfDays,
+                                                           @RequestParam Double averageSalary,
+                                                           @RequestParam(required = false)
                                                   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dateOfStart) throws WrongParametersException {
 
-        CalculateResponse calculateResponse = new CalculateResponse();
-        calculateResponse.setSalary(calculating.calculate(dateOfStart, countOfDays, averageSalary));
-        return new ResponseEntity<>(calculateResponse, HttpStatus.OK);
+        CalculationResponse calculationResponse = new CalculationResponse();
+        calculationResponse.setSalary(calculating.calculate(dateOfStart, countOfDays, averageSalary));
+        return new ResponseEntity<>(calculationResponse, HttpStatus.OK);
     }
 
 }

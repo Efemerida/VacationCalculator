@@ -2,7 +2,7 @@ package neoflex.dto;
 
 import java.math.BigDecimal;
 
-public class CalculateResponse {
+public class CalculationResponse {
 
     private BigDecimal salary;
 

@@ -11,11 +11,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Service
-public class CalculateServiceImpl implements CalculateService {
+public class CalculationServiceImpl implements CalculationService {
 
     HolidaysRepository holidaysRepository;
 
-    public CalculateServiceImpl(HolidaysRepository holidaysRepository) {
+    public CalculationServiceImpl(HolidaysRepository holidaysRepository) {
         this.holidaysRepository = holidaysRepository;
     }
 
