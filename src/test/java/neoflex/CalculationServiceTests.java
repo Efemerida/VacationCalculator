@@ -1,7 +1,7 @@
 package neoflex;
 
-import neoflex.exceptions.WrongParametersException;
 import neoflex.services.CalculationService;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,15 +18,15 @@ public class CalculationServiceTests {
     CalculationService calculationService;
 
     @Test
-    void calculateServiceWithDateTest() throws WrongParametersException {
-        BigDecimal vacation = calculationService.calculate(LocalDate.of(2024,1,1),
-                16, 1000);
+    void calculateServiceWithDateTest(){
+        BigDecimal vacation = calculationService.calculate(
+                16, 1000, LocalDate.of(2024,1,1));
         assertEquals(vacation, BigDecimal.valueOf(204.78));
     }
 
     @Test
-    void calculateServiceWithoutDateTest() throws WrongParametersException {
-        BigDecimal vacation = calculationService.calculate(null,6, 1000);
+    void calculateServiceWithoutDateTest(){
+        BigDecimal vacation = calculationService.calculate(6, 1000);
         assertEquals(vacation, BigDecimal.valueOf(204.78));
     }
 
